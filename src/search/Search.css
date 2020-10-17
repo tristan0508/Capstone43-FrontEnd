@@ -1,0 +1,45 @@
+.searchContainer {
+    padding: 1.5625rem;
+    margin: auto;
+}
+
+.foodCard {
+    height: 7.8125rem !important;
+}
+
+.foodImage {
+    height: 1.875rem;
+}
+
+.foodCardIcon:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.foodCardContainer {
+    height: 18.75rem;
+    width: 12.5rem;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.modalImage {
+    height: 2.5rem;
+}
+
+.nutritionTable {
+    height: 29.375rem;
+}
