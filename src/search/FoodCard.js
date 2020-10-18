@@ -24,8 +24,9 @@ useEffect(() => {
 
 
     return (
+    
         <Card className="foodCard" title={props.name} extra={<SearchOutlined onClick={showModal} id={props.id}className="foodCardIcon"
-         style={{ fontSize: '20px', color: '#4285F4' }}/>} style={{width: 180}}>
+         style={{ fontSize: '20px', color: '#4285F4' }}/>} style={{width: 238}}>
 
             <img className="foodImage" src={url + props.image} alt="food" />
 

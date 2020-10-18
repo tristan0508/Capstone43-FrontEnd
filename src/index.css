@@ -1,15 +1,28 @@
 @import '~antd/dist/antd.css';
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Space Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./images/My_Post_2_iceb2d.png);
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  display: flex;
+  background-color: white;
+  height: 90px; 
+  position: sticky;
+}
+
+.row2 {
+  height: 300px;
+  background: transparent;
+  position: relative;
+  z-index: -1;
 }

@@ -11,6 +11,8 @@ export const FoodDataProvider = (props) => {
     const [foodName, setFoodName] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const[visible, setVisible] = useState(false)
+    // const [exist, setExist] = useState(null)
+    
 
     const getFood = (input) => {
         setIsLoading(true)
@@ -39,13 +41,29 @@ export const FoodDataProvider = (props) => {
             })
             return a
         }).then(res => res.map(b => b))
-        .then(res => res[0].slice(0, 8))
+        .then(res => res[0].slice(0, 9))
         .then(setNutrition)
     }
 
+        const addFood= foodItem => {
+           return fetch("http://localhost:8088/foodItems", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(foodItem)
+            })
+        }
+
+        const doesFoodExist = () => {
+            return fetch(`http://localhost:8088/foodItems`)
+            .then(res => res.json()) 
+        }
+
     return (
         <FoodContext.Provider value={{
-            FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName
+            FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
+            addFood, doesFoodExist
         }}>
             {props.children}
         </FoodContext.Provider>
