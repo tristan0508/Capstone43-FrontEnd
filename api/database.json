@@ -1,0 +1,137 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "twyatt0508",
+      "firstName": "tristan",
+      "lastName": "wyatt",
+      "emailAddress": "tristan7306@gmail.com"
+    }
+  ],
+  "foodLogs": [
+    {
+      "id": 1,
+      "userId": 1,
+      "calorieId": 1,
+      "title": "My food log",
+      "date": "10/17/2020"
+    }
+  ],
+  "calories": [
+    {
+      "id": 1,
+      "userId": 1,
+      "foodLogId": 1,
+      "calorieStart": 0,
+      "calorieEnd": 0
+    }
+  ],
+  "meals": [
+    {
+      "id": 1,
+      "name": "lunch",
+      "foodLogId": 1,
+      "foodItemId": 9003
+    }
+  ],
+  "foodItems": [
+    {
+      "id": 9003,
+      "name": "apple",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/apple.jpg",
+      "calories": 32.5,
+      "fat": 0.11,
+      "saturatedFat": 0.02,
+      "carbohydrates": 8.63,
+      "netCarbohydrates": 7.13,
+      "sugar": 6.49,
+      "cholesterol": 0,
+      "sodium": 0.63,
+      "protein": 0.16
+    },
+    {
+      "id": 1123,
+      "name": "eggs",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/egg.png",
+      "calories": 62.92,
+      "fat": 4.18,
+      "saturatedFat": 1.38,
+      "carbohydrates": 0.32,
+      "netCarbohydrates": 0.32,
+      "sugar": 0.16,
+      "cholesterol": 163.68,
+      "sodium": 62.48,
+      "protein": 5.53
+    },
+    {
+      "id": 19335,
+      "name": "sugar",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/sugar-in-bowl.png",
+      "calories": 46.44,
+      "fat": 0,
+      "saturatedFat": 0,
+      "carbohydrates": 12,
+      "netCarbohydrates": 12,
+      "sugar": 11.98,
+      "cholesterol": 0,
+      "sodium": 0.12,
+      "protein": 0
+    },
+    {
+      "id": 23232,
+      "name": "steaks",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/ribeye-raw.jpg",
+      "calories": 470.08,
+      "fat": 31.96,
+      "saturatedFat": 14.22,
+      "carbohydrates": 0,
+      "netCarbohydrates": 0,
+      "sugar": 0,
+      "cholesterol": 137.86,
+      "sodium": 117.52,
+      "protein": 45.47
+    },
+    {
+      "id": 4609,
+      "name": "bacon fat",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/raw-bacon.png",
+      "calories": 8.97,
+      "fat": 1,
+      "saturatedFat": 0.39,
+      "carbohydrates": 0,
+      "netCarbohydrates": 0,
+      "sugar": 0,
+      "cholesterol": 0.95,
+      "sodium": 1.5,
+      "protein": 0
+    },
+    {
+      "id": 9019,
+      "name": "applesauce",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/applesauce.png",
+      "calories": 51.24,
+      "fat": 0.12,
+      "saturatedFat": 0.01,
+      "carbohydrates": 13.75,
+      "netCarbohydrates": 12.41,
+      "sugar": 11.46,
+      "cholesterol": 0,
+      "sodium": 2.44,
+      "protein": 0.21
+    },
+    {
+      "id": 9016,
+      "name": "apple juice",
+      "image": "https://spoonacular.com/cdn/ingredients_100x100/apple-juice.jpg",
+      "calories": 57.5,
+      "fat": 0.16,
+      "saturatedFat": 0.03,
+      "carbohydrates": 14.13,
+      "netCarbohydrates": 13.88,
+      "sugar": 12.03,
+      "cholesterol": 0,
+      "sodium": 5,
+      "protein": 0.13
+    }
+  ]
+}
