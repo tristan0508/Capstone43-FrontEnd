@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { FoodContext } from './FoodDataProvider'
-import { Card} from 'antd'
+import { Card, Popover } from 'antd'
 import './Search.css'
 import { SearchOutlined } from '@ant-design/icons'
 
@@ -22,11 +22,12 @@ useEffect(() => {
     }
 }
 
-
+ 
     return (
     
-        <Card className="foodCard" title={props.name} extra={<SearchOutlined onClick={showModal} id={props.id}className="foodCardIcon"
-         style={{ fontSize: '20px', color: '#4285F4' }}/>} style={{width: 238}}>
+        <Card className="foodCard" title={props.name} extra=
+        {<Popover content={"Info"}> <SearchOutlined  onClick={showModal} id={props.id}className="foodCardIcon"
+         style={{ fontSize: '20px', color: '#4285F4' }}/> </Popover>} style={{width: 238}}>
 
             <img className="foodImage" src={url + props.image} alt="food" />
 

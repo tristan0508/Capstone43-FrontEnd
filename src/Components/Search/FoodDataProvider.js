@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react'
-import { key } from '../Settings';
+import { key } from '../../Settings';
 
 const apiKey = key.apiKey
 
@@ -10,8 +10,8 @@ export const FoodDataProvider = (props) => {
     const [nutrition, setNutrition] = useState([])
     const [foodName, setFoodName] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const[visible, setVisible] = useState(false)
-    // const [exist, setExist] = useState(null)
+    const [visible, setVisible] = useState(false)
+    const [addToDb, setAddToDb] = useState([])
     
 
     const getFood = (input) => {
@@ -19,8 +19,7 @@ export const FoodDataProvider = (props) => {
         return fetch(`https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${apiKey}&number=5&query=${input}`)
         .then(res => res.json())
         .then(setFood)
-        .then(() => {setIsLoading(false
-            )})
+        .then(() => {setIsLoading(false)})
     }
 
     const getNutrition = (food) => {
@@ -55,15 +54,15 @@ export const FoodDataProvider = (props) => {
             })
         }
 
-        const doesFoodExist = () => {
-            return fetch(`http://localhost:8088/foodItems`)
+        const usersFood = () => {
+            return fetch(`http://localhost:8088/foodItems/?userId=1`)
             .then(res => res.json()) 
         }
 
     return (
         <FoodContext.Provider value={{
             FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
-            addFood, doesFoodExist
+            addFood, usersFood, addToDb, setAddToDb
         }}>
             {props.children}
         </FoodContext.Provider>

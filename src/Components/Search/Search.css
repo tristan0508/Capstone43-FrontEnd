@@ -1,11 +1,9 @@
 .searchContainer {
-    padding: 1.5625rem;
-    margin: auto;
-    position: absolute;
+    padding: 15px;
 }
 
 .searchContainer h4 {
-    color: black;
+    color: white;
 }
 
 .foodCard {

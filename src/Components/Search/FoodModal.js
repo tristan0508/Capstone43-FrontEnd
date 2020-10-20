@@ -1,8 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import { FoodContext } from './FoodDataProvider';
+import { FoodDatabaseContext } from '../FoodLog/FoodDatabaseProvider'
 import { Modal, Table } from 'antd'
 import { url } from './FoodCard'
 import './Search.css'
+
 
  const columns = [
     {
@@ -32,11 +34,12 @@ import './Search.css'
 ];
 
 export const FoodModal = (props) => {
-    const { visible, setVisible, nutrition, foodName, addFood, doesFoodExist } = useContext(FoodContext)
+    const { getFoodDatabase, setFoodDatabase, foodDatabase } = useContext(FoodDatabaseContext)
+    const { visible, setVisible, nutrition, foodName, addFood, usersFood } = useContext(FoodContext)
     let image = <img className="modalImage"src={url + foodName.image} alt="food" />
 
    useEffect(() => {
-    
+        console.log(foodDatabase)
    }, [nutrition])
 
    const isVisible = () => {
@@ -49,13 +52,15 @@ export const FoodModal = (props) => {
     let amount = nutrition.map(b => {
         return b.amount
     })
-    await doesFoodExist().then(res => {
+    await usersFood().then(res => {
         let a = res.filter(id => id.id === foodName.id)
         return a[0]
     }).then(res => {
         if(res === undefined){
             addFood({
-                id: foodName.id,
+                apiId: foodName.id,
+                mealId: 0,
+                userId: 1,
                 name: foodName.name,
                 image:  `https://spoonacular.com/cdn/ingredients_100x100/${foodName.image}`,
                 calories: amount[0],
@@ -68,10 +73,10 @@ export const FoodModal = (props) => {
                 sodium: amount[7],
                 protein: amount[8]
             })
-        } else {
-            console.log(res)
-        }
+        } 
+        getFoodDatabase()
         setVisible(false)
+        
     })
 }
 

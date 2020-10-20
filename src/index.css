@@ -1,6 +1,7 @@
 @import '~antd/dist/antd.css';
 body {
-  margin: 0;
+  width: fit-content;
+  height: fit-content;
   font-family: 'Space Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,16 +14,13 @@ code {
     monospace;
 }
 
-.header {
-  display: flex;
-  background-color: white;
-  height: 90px; 
-  position: sticky;
+.layout {
+  background-color: rgba(0,0,0,0.3);
+  margin: auto;
+  min-height: 43.75rem;
+  width: auto;
 }
 
-.row2 {
-  height: 300px;
-  background: transparent;
-  position: relative;
-  z-index: -1;
+.layoutFooter {
+  background-color: white;
 }
