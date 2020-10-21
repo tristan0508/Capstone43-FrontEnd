@@ -13,7 +13,7 @@ export const FoodDataProvider = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
     const [foodDatabase, setFoodDatabase] = useState([])
-    const [item, setItem] = useState([])
+    const [searchTerms, setSearchTerms] = useState('')
     
     
 
@@ -46,9 +46,15 @@ export const FoodDataProvider = (props) => {
         .then(res => res[0].slice(0, 9))
         .then(setNutrition)
     }
+        const deleteFoodItem = foodId => {
+            fetch(`http://localhost:8080/foodItems/${foodId}`, {
+                method: "DELETE",
+            })
+            .then(getFoodDatabase)
+        }
 
         const addFood = foodItem => {
-           return fetch("http://localhost:8088/foodItems", {
+           return fetch("http://localhost:8080/foodItems", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -60,21 +66,17 @@ export const FoodDataProvider = (props) => {
         }
 
         const getFoodDatabase = useCallback(() => {
-           return fetch("http://localhost:8088/foodItems/?userId=1")
+           return fetch("http://localhost:8080/foodItems/?userId=1")
             .then(res => res.json())
             .then(setFoodDatabase)
         },[setFoodDatabase])
 
-        const getItem = (name) => {
-            return fetch(`http://localhost:8088/foodItems/?name=${name}`)
-            .then(res => res.json())
-            .then(setItem)
-        }
+
 
     return (
         <FoodContext.Provider value={{
             FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
-            addFood, getFoodDatabase, foodDatabase, item, getItem
+            addFood, getFoodDatabase, foodDatabase, deleteFoodItem, searchTerms, setSearchTerms
         }}>
             {props.children}
         </FoodContext.Provider>
