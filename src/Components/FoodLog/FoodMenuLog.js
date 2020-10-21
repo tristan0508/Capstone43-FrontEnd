@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, Menu } from 'antd';
-import './FoodLog.css'
 
 const { Header, Footer, Content } = Layout;
 
@@ -35,7 +34,7 @@ const[menuItem, setMenuItem] = useState('breakfast')
             </Menu>
         </Header>
         <Content className="layoutContent">
-            {console.log(menuItem)}
+            
         </Content>
         <Footer className="layoutFooter"></Footer>
     </Layout>

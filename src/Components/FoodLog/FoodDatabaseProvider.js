@@ -3,14 +3,10 @@ import React, { useState, createContext } from 'react'
 export const FoodDatabaseContext = createContext()
 
 export const FoodDatabaseProvider = (props) => {
-    const[foodDatabase, setFoodDatabase] = useState([])
+
     const[meals, setMeals] = useState([])
 
-    const getFoodDatabase = () => {
-        return fetch("http://localhost:8088/foodItems/?userId=1")
-        .then(res => res.json())
-        .then(setFoodDatabase)
-    }
+
 
     const getMeals = () => {
         return fetch("http://localhost:8088/meals/")
@@ -29,7 +25,7 @@ export const FoodDatabaseProvider = (props) => {
     }
     return (
         <FoodDatabaseContext.Provider value={{
-            foodDatabase, getFoodDatabase, meals, getMeals
+             meals, getMeals
         }}>
             {props.children}
         </FoodDatabaseContext.Provider>

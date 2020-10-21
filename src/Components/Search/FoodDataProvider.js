@@ -1,9 +1,10 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useCallback } from 'react'
 import { key } from '../../Settings';
 
 const apiKey = key.apiKey
 
 export const FoodContext = createContext();
+
 
 export const FoodDataProvider = (props) => {
     const [food, setFood] = useState([])
@@ -11,7 +12,9 @@ export const FoodDataProvider = (props) => {
     const [foodName, setFoodName] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [visible, setVisible] = useState(false)
-    const [addToDb, setAddToDb] = useState([])
+    const [foodDatabase, setFoodDatabase] = useState([])
+    const [item, setItem] = useState([])
+    
     
 
     const getFood = (input) => {
@@ -44,25 +47,34 @@ export const FoodDataProvider = (props) => {
         .then(setNutrition)
     }
 
-        const addFood= foodItem => {
+        const addFood = foodItem => {
            return fetch("http://localhost:8088/foodItems", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(foodItem)
-            })
+            }) 
+            .then(res => res.json()) 
+            .then(getFoodDatabase)
         }
 
-        const usersFood = () => {
-            return fetch(`http://localhost:8088/foodItems/?userId=1`)
-            .then(res => res.json()) 
+        const getFoodDatabase = useCallback(() => {
+           return fetch("http://localhost:8088/foodItems/?userId=1")
+            .then(res => res.json())
+            .then(setFoodDatabase)
+        },[setFoodDatabase])
+
+        const getItem = (name) => {
+            return fetch(`http://localhost:8088/foodItems/?name=${name}`)
+            .then(res => res.json())
+            .then(setItem)
         }
 
     return (
         <FoodContext.Provider value={{
             FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
-            addFood, usersFood, addToDb, setAddToDb
+            addFood, getFoodDatabase, foodDatabase, item, getItem
         }}>
             {props.children}
         </FoodContext.Provider>

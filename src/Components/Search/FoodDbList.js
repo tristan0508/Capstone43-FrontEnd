@@ -1,26 +1,25 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { FoodDatabaseContext } from './FoodDatabaseProvider'
+import React, { useEffect, useContext, useState, createContext } from 'react';
+import { FoodContext } from './FoodDataProvider';
 import { FoodSaved } from './FoodSaved'
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
+
 const { Search } = Input;
 
+
 export const FoodDbList = (props) => {
-    const { foodDatabase, getFoodDatabase } = useContext(FoodDatabaseContext)
+    const { foodDatabase, getFoodDatabase, item, getItem, addFood } = useContext(FoodContext)
     const onSearch = value => console.log(value);
 
-    useEffect(() => {
-        getFoodDatabase()
-    
-    }, [])
+useEffect(() => {
+    getFoodDatabase()
 
-    useEffect(() => {
-        
-    
-    }, [getFoodDatabase])
+}, [getFoodDatabase])
 
-  
+
+
+
 
     return (
        <> 
@@ -34,6 +33,7 @@ export const FoodDbList = (props) => {
         
         
                 {
+                    
                 <div className="foodDbCards">
                     {foodDatabase.map(food => {
                     return <FoodSaved key={food.id} name={food.name} calories={food.calories} image={food.image}
