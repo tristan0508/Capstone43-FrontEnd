@@ -1,38 +1,48 @@
 import React from 'react'
-import { FoodDataProvider } from './search/FoodDataProvider'
-import { FoodModal } from './search/FoodModal'
-import { FoodSearch } from './search/FoodSearch'
-import { Row, Col } from 'antd'
+import { FoodDataProvider } from './Components/Search/FoodDataProvider'
+import { FoodModal } from './Components/Search/FoodModal'
+import { FoodSearch } from './Components/Search/FoodSearch'
+import { FoodDatabaseProvider } from './Components/FoodLog/FoodDatabaseProvider'
+import './GridLayout.css'
+import { FoodMenuLog } from './Components/FoodLog/FoodMenuLog'
+import { FoodDbList } from './Components/Search/FoodDbList'
 
 
 export const MacroTracker = () => (
-    <>
-        <Row gutter={[16, 16]} className="row1" >
-            <Col span={24}>
-                <header className="header">
-                    <FoodDataProvider>
-                        <FoodSearch />
-                        <FoodModal />
-                    </FoodDataProvider>
-                </header>
-            </Col>
-        </Row>
-        <Row className="row2">
-            <Col span={12}></Col>
-            <Col span={12}></Col>
-        </Row>
-        <Row>
-            <Col span={8}></Col>
-            <Col span={8}></Col>
-            <Col span={8}></Col>
-        </Row>
-        <Row>
-            <Col span={6}></Col>
-            <Col span={6}></Col>
-            <Col span={6}></Col>
-            <Col span={6}></Col>
-        </Row>
-  </>
+    <div className="gridContainer">
+
+        <header className="gridHeader"></header>
+        <FoodDataProvider>
+            <aside className="gridAside">
+                <div className="gridAside1">
+                    <FoodSearch />
+                    <FoodModal />
+                </div>
+                <div className="gridAside2 foodSavedContainer">
+                    <FoodDbList />
+                    <FoodModal />
+                </div>
+            </aside>
+        </FoodDataProvider>
+        <main className="gridMain">
+            <div className="gridMain1">
+                <FoodDataProvider>
+                    <FoodDatabaseProvider>
+                        <FoodMenuLog />
+                    </FoodDatabaseProvider>
+                </FoodDataProvider>
+            </div>
+            <div className="gridMain2"></div>
+            <div className="gridMain3"></div>
+
+        </main>
+        <footer className="gridFooter"></footer>
+
+    </div>
 
 )
+
+
+
+
 

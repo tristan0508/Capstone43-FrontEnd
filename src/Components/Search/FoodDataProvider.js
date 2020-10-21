@@ -1,17 +1,20 @@
-import React, { useState, createContext } from 'react'
-import { key } from '../Settings';
+import React, { useState, createContext, useCallback } from 'react'
+import { key } from '../../Settings';
 
 const apiKey = key.apiKey
 
 export const FoodContext = createContext();
+
 
 export const FoodDataProvider = (props) => {
     const [food, setFood] = useState([])
     const [nutrition, setNutrition] = useState([])
     const [foodName, setFoodName] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const[visible, setVisible] = useState(false)
-    // const [exist, setExist] = useState(null)
+    const [visible, setVisible] = useState(false)
+    const [foodDatabase, setFoodDatabase] = useState([])
+    const [item, setItem] = useState([])
+    
     
 
     const getFood = (input) => {
@@ -19,8 +22,7 @@ export const FoodDataProvider = (props) => {
         return fetch(`https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${apiKey}&number=5&query=${input}`)
         .then(res => res.json())
         .then(setFood)
-        .then(() => {setIsLoading(false
-            )})
+        .then(() => {setIsLoading(false)})
     }
 
     const getNutrition = (food) => {
@@ -45,25 +47,34 @@ export const FoodDataProvider = (props) => {
         .then(setNutrition)
     }
 
-        const addFood= foodItem => {
+        const addFood = foodItem => {
            return fetch("http://localhost:8088/foodItems", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(foodItem)
-            })
+            }) 
+            .then(res => res.json()) 
+            .then(getFoodDatabase)
         }
 
-        const doesFoodExist = () => {
-            return fetch(`http://localhost:8088/foodItems`)
-            .then(res => res.json()) 
+        const getFoodDatabase = useCallback(() => {
+           return fetch("http://localhost:8088/foodItems/?userId=1")
+            .then(res => res.json())
+            .then(setFoodDatabase)
+        },[setFoodDatabase])
+
+        const getItem = (name) => {
+            return fetch(`http://localhost:8088/foodItems/?name=${name}`)
+            .then(res => res.json())
+            .then(setItem)
         }
 
     return (
         <FoodContext.Provider value={{
             FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
-            addFood, doesFoodExist
+            addFood, getFoodDatabase, foodDatabase, item, getItem
         }}>
             {props.children}
         </FoodContext.Provider>
