@@ -34,7 +34,7 @@ import './Search.css'
 ];
 
 export const FoodModal = (props) => {
-    const { visible, setVisible, nutrition, foodName, addFood, getItem, item, getFoodDatabase } = useContext(FoodContext)
+    const { visible, setVisible, nutrition, foodName, addFood, item } = useContext(FoodContext)
     let image = <img className="modalImage"src={url + foodName.image} alt="food" />
 
    useEffect(() => {
@@ -53,7 +53,6 @@ export const FoodModal = (props) => {
     })
       addFood({
                 apiId: foodName.id,
-                mealId: 0,
                 userId: 1,
                 name: foodName.name,
                 image:  `https://spoonacular.com/cdn/ingredients_100x100/${foodName.image}`,
@@ -67,18 +66,9 @@ export const FoodModal = (props) => {
                 sodium: amount[7],
                 protein: amount[8]
             })
-            
-              setVisible(false)
-            
-            
-          
-   }
+              setVisible(false)   
+    }
        
-        
-    
-
-
- 
 
     return (
         <>

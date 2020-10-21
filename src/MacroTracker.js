@@ -10,34 +10,32 @@ import { FoodDbList } from './Components/Search/FoodDbList'
 
 export const MacroTracker = () => (
     <div className="gridContainer">
-
-        <header className="gridHeader"></header>
         <FoodDataProvider>
-            <aside className="gridAside">
-                <div className="gridAside1">
-                    <FoodSearch />
-                    <FoodModal />
+            <header className="gridHeader"></header>
+                <aside className="gridAside">
+                    <div className="gridAside1">
+                        <FoodSearch />
+                        <FoodModal />
+                    </div>
+                    <div className="gridAside2 foodSavedContainer">
+                        <FoodDbList />
+                        <FoodModal />
+                    </div>
+                </aside>
+            <main className="gridMain">
+                <div className="gridMain1">
+                    
+                        <FoodDatabaseProvider>
+                            <FoodMenuLog />
+                        </FoodDatabaseProvider>
+                
                 </div>
-                <div className="gridAside2 foodSavedContainer">
-                    <FoodDbList />
-                    <FoodModal />
-                </div>
-            </aside>
+                <div className="gridMain2"></div>
+                <div className="gridMain3"></div>
+
+            </main>
+            <footer className="gridFooter"></footer>
         </FoodDataProvider>
-        <main className="gridMain">
-            <div className="gridMain1">
-                <FoodDataProvider>
-                    <FoodDatabaseProvider>
-                        <FoodMenuLog />
-                    </FoodDatabaseProvider>
-                </FoodDataProvider>
-            </div>
-            <div className="gridMain2"></div>
-            <div className="gridMain3"></div>
-
-        </main>
-        <footer className="gridFooter"></footer>
-
     </div>
 
 )

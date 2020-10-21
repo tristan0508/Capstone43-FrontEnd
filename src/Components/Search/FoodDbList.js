@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState, createContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { FoodContext } from './FoodDataProvider';
 import { FoodSaved } from './FoodSaved'
 import { Input } from 'antd';
@@ -9,8 +9,9 @@ const { Search } = Input;
 
 
 export const FoodDbList = (props) => {
-    const { foodDatabase, getFoodDatabase, item, getItem, addFood } = useContext(FoodContext)
-    const onSearch = value => console.log(value);
+    const { foodDatabase, getFoodDatabase, searchTerms, setSearchTerms } = useContext(FoodContext)
+    const [ filteredFood, setFiltered ] = useState([])
+    
 
 useEffect(() => {
     getFoodDatabase()
@@ -18,7 +19,14 @@ useEffect(() => {
 }, [getFoodDatabase])
 
 
-
+useEffect(() => {
+        if (searchTerms !== "") {
+            const subset = foodDatabase.filter(food => food.name.toLowerCase().includes(searchTerms.toLowerCase().trim()))
+            setFiltered(subset)
+        } else {
+            setFiltered(foodDatabase)
+        }
+}, [searchTerms, foodDatabase])
 
 
     return (
@@ -26,7 +34,9 @@ useEffect(() => {
         <div className="dbSearchContainer">
             <h4>Search Food Saved</h4>
             <Search className="foodDbSearch" placeholder="input search text"
-             onSearch={onSearch}
+             onKeyUp={
+                 (keyEvent) => setSearchTerms(keyEvent.target.value)
+             }
             style={{ width: 250 }}
             enterButton={<SearchOutlined />}
             allowClear={true} />
@@ -35,7 +45,7 @@ useEffect(() => {
                 {
                     
                 <div className="foodDbCards">
-                    {foodDatabase.map(food => {
+                    {filteredFood.map(food => {
                     return <FoodSaved key={food.id} name={food.name} calories={food.calories} image={food.image}
                     id={food.id}/>
                     })}
