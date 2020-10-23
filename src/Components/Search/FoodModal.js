@@ -34,12 +34,12 @@ import './Search.css'
 ];
 
 export const FoodModal = (props) => {
-    const { visible, setVisible, nutrition, foodName, addFood, item } = useContext(FoodContext)
+    const { visible, setVisible, nutrition, foodName, addFood, doesItemExist } = useContext(FoodContext)
     let image = <img className="modalImage"src={url + foodName.image} alt="food" />
 
    useEffect(() => {
-    
-   }, [item])
+   
+   }, [nutrition])
 
    const isVisible = () => {
        if(visible === true){
@@ -51,6 +51,9 @@ export const FoodModal = (props) => {
     let amount = nutrition.map(b => {
         return b.amount
     })
+    let foodExist = doesItemExist.filter(food => food.name === foodName.name)
+    console.log(foodExist)
+    if(foodExist.length === 0){
       addFood({
                 apiId: foodName.id,
                 userId: 1,
@@ -66,7 +69,10 @@ export const FoodModal = (props) => {
                 sodium: amount[7],
                 protein: amount[8]
             })
-              setVisible(false)   
+          } else {
+            window.alert("Item Already Exists")
+          }
+            setVisible(false)   
     }
        
 

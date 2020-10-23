@@ -1,0 +1,13 @@
+.addFoodLog {
+    position: relative;
+
+}
+
+.layout {
+    max-height: 700px;
+}
+
+.layoutContent {
+    overflow: auto;
+    background-color: white;
+}
