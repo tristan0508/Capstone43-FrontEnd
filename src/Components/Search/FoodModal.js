@@ -52,7 +52,6 @@ export const FoodModal = (props) => {
         return b.amount
     })
     let foodExist = doesItemExist.filter(food => food.name === foodName.name)
-    console.log(foodExist)
     if(foodExist.length === 0){
       addFood({
                 apiId: foodName.id,
