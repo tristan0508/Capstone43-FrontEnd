@@ -2,12 +2,15 @@ import React, { useState, createContext } from 'react'
 
 export const FoodDatabaseContext = createContext()
 let foodLog = JSON.parse(sessionStorage.getItem("foodLog"))
+let source = JSON.parse(sessionStorage.getItem("foodSource"))
 
 export const FoodDatabaseProvider = (props) => {
     const [meals, setMeals] = useState([])
     const [dbFoodItem, setDbFoodItem] = useState(foodLog? foodLog : [])
     let [foodItem, setFoodItem] = useState(sessionStorage.getItem('foodLog'))
-    const [panelSwitch, setPanelSwitch] = useState('1')
+    const [panelSwitch, setPanelSwitch] = useState('breakfast')
+    let [panelType, setPanelType] = useState('')
+    const [foodSource, setFoodSource] = useState(source? source : [])
     
 
 
@@ -32,36 +35,20 @@ export const FoodDatabaseProvider = (props) => {
         .then(res => res.json())
         .then(res => {
             let incomingItem = [...res]
-            let panel = parseInt(panelSwitch)
+          
 
-            let panelType;
-            switch (panel) {
-                case 1:
-                panelType = 'breakfast';
-                break;
-                case 2:
-                panelType = 'lunch';
-                break;
-                case 3:
-                panelType = 'dinner';
-                break;
-                case 4:
-                panelType = 'snack';
-                break;
-                default:
-                panelType = 'breakfast';
-                break;
-            }
             if(dbFoodItem.length !== 0){
-                   let type = incomingItem.map(food => ({...food, type: panelType}))
+                   let type = incomingItem.map(food => ({...food, type: panelSwitch}))
                    let fooditems = [...type, ...dbFoodItem]
                     setDbFoodItem(fooditems)
-                   
-                
-         
+                   let sourceOfFood = [...type, ...foodSource] 
+                   setFoodSource(sourceOfFood)
+                    
             } else {
-                let foodItem = incomingItem.map(food => ({...food, type: panelType}))
+                let foodItem = incomingItem.map(food => ({...food, type: panelSwitch}))
                 setDbFoodItem(foodItem)
+                setFoodSource(foodItem)
+                
             }
         })
     }
@@ -70,7 +57,7 @@ export const FoodDatabaseProvider = (props) => {
     return (
         <FoodDatabaseContext.Provider value={{
              meals, getMeals, dbFoodItem, getDbFoodItem, setDbFoodItem, foodItem, setFoodItem,
-             panelSwitch, setPanelSwitch
+             panelSwitch, setPanelSwitch, panelType, setPanelType, foodSource
         }}>
             {props.children}
         </FoodDatabaseContext.Provider>

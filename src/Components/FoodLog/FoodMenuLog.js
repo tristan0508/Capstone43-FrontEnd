@@ -31,22 +31,23 @@ const columns = [
 
 
 export const FoodMenuLog = () => {
-    const { dbFoodItem, setPanelSwitch, setFoodItem } = useContext(FoodDatabaseContext)
+    const { dbFoodItem, setPanelSwitch, setFoodItem, panelSwitch, foodSource, setDbFoodItem } = useContext(FoodDatabaseContext)
     const [menuItem, setMenuItem] = useState('breakfast')
 
 
     sessionStorage.setItem("foodLog", JSON.stringify(dbFoodItem))
+    sessionStorage.setItem("foodSource", JSON.stringify(foodSource))
     let foodLog = JSON.parse(sessionStorage.getItem("foodLog"))
+    let source = JSON.parse(sessionStorage.getItem("foodSource"))
 
-
-
-    useEffect(() => { 
+    useEffect(() => {
         
     }, [foodLog])
 
 
     const deleteItem = (itemName) => {
-        let index = dbFoodItem.findIndex(food => food.name === itemName)
+        let index = dbFoodItem.findIndex(food => food.name === itemName && food.type === panelSwitch)
+     
         let b = dbFoodItem.splice(index, 1)
             setFoodItem(b)
     }
@@ -54,17 +55,48 @@ export const FoodMenuLog = () => {
 
 
     const changed = (e) => {
-        let a = parseInt(e)
+        let panel = parseInt(e)
+    
         if(e){
-            setPanelSwitch(a)
+        let panelType;
+
+        switch (panel) {
+            case 1:
+            panelType = 'breakfast';
+            break;
+            case 2:
+            panelType = 'lunch';
+            break;
+            case 3:
+            panelType = 'dinner';
+            break;
+            case 4:
+            panelType = 'snack';
+            break;
+            default:
+            panelType = 'breakfast';
+            break;
+        }
+            setPanelSwitch(panelType)
         }
     }
 
-    const quantity = (e) => {
-        
-        console.log(e)
-    }
 
+    const quantity = (foodName, quantity) => {
+    let foodItem = source.filter(food => food.name === foodName && food.type === panelSwitch)
+    let number = foodItem.map(food => food.calories )
+    let numberReturn = number * quantity
+    
+    let newArray = foodLog.map(food => {
+        if(food.name === foodName && food.type === panelSwitch){
+            food.calories = numberReturn
+            food.quantity = quantity
+        }
+        return food
+    })
+    setDbFoodItem(newArray)
+}
+  
     return (
         
     <Layout className="layout">
@@ -94,8 +126,8 @@ export const FoodMenuLog = () => {
                                 Image: <img  className="foodImage"src={food.image} alt={food.name} />,
                                 Name: food.name,
                                 Calories: food.calories,
-                                Quantity: <InputNumber  min={1} max={15} defaultValue={1} onChange={quantity}/>,
-                                Delete: <DeleteOutlined  onClick={deleteItem.bind(this, food.index)}/>
+                                Quantity: <InputNumber  min={1} max={15} defaultValue={1} value={food.quantity} onChange={quantity.bind(this, food.name)} />,
+                                Delete: <DeleteOutlined  onClick={deleteItem.bind(this, food.name)}/>
                             }
                         })
                     } />
@@ -108,7 +140,7 @@ export const FoodMenuLog = () => {
                                 Image: <img id={food.name} className="foodImage"src={food.image} alt={food.name} />,
                                 Name: food.name,
                                 Calories: food.calories,
-                                Quantity: <InputNumber min={1} max={15} defaultValue={1} onChange/>,
+                                Quantity: <InputNumber min={1} max={15} defaultValue={1} value={food.quantity} onChange={quantity.bind(this, food.name)}/>,
                                 Delete: <DeleteOutlined id={food.name} onClick={deleteItem.bind(this, food.name)}/>
                             }
                         })
@@ -122,7 +154,7 @@ export const FoodMenuLog = () => {
                                 Image: <img id={food.name} className="foodImage"src={food.image} alt={food.name} />,
                                 Name: food.name,
                                 Calories: food.calories,
-                                Quantity: <InputNumber min={1} max={15} defaultValue={1} onChange/>,
+                                Quantity: <InputNumber min={1} max={15} defaultValue={1} value={food.quantity} onChange={quantity.bind(this, food.name)}/>,
                                 Delete: <DeleteOutlined id={food.name} onClick={deleteItem.bind(this, food.name)}/>
                             }
                         })
@@ -136,7 +168,7 @@ export const FoodMenuLog = () => {
                                 Image: <img id={food.name} className="foodImage"src={food.image} alt={food.name} />,
                                 Name: food.name,
                                 Calories: food.calories,
-                                Quantity: <InputNumber min={1} max={15} defaultValue={1} onChange/>,
+                                Quantity: <InputNumber min={1} max={15} defaultValue={1} value={food.quantity} onChange={quantity.bind(this, food.name)}/>,
                                 Delete: <DeleteOutlined id={food.name} onClick={deleteItem.bind(this, food.name)}/>
                             }
                         })
