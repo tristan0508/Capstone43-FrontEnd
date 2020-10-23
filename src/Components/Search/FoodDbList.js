@@ -1,7 +1,7 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState, useRef } from 'react';
 import { FoodContext } from './FoodDataProvider';
 import { FoodSaved } from './FoodSaved'
-import { Input } from 'antd';
+import { Input, Switch } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 
@@ -11,6 +11,8 @@ const { Search } = Input;
 export const FoodDbList = (props) => {
     const { foodDatabase, getFoodDatabase, searchTerms, setSearchTerms } = useContext(FoodContext)
     const [ filteredFood, setFiltered ] = useState([])
+
+    const check = useRef()
     
 
 useEffect(() => {
@@ -28,6 +30,14 @@ useEffect(() => {
         }
 }, [searchTerms, foodDatabase])
 
+const checked = (event) => {
+    console.log(event)
+        if(event === false){
+        check.current.className = 'foodDbCardsHidden'
+        } else {
+        check.current.className = 'foodDbCards'
+    }
+}
 
     return (
        <> 
@@ -40,16 +50,18 @@ useEffect(() => {
             style={{ width: 250 }}
             enterButton={<SearchOutlined />}
             allowClear={true} />
+            <Switch className="switchVisible" defaultChecked onChange={checked}/>
         
-        
+             
                 {
                     
-                <div className="foodDbCards">
+                <div ref={check} className="foodDbCards">
                     {filteredFood.map(food => {
                     return <FoodSaved key={food.id} name={food.name} calories={food.calories} image={food.image}
-                    id={food.id}/>
+                    id={food.id} apiId={food.apiId}/>
                     })}
                 </div>
+
                 }
         </div>
         </>

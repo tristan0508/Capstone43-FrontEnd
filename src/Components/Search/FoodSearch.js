@@ -11,7 +11,6 @@ const { Search } = Input;
 
 export const FoodSearch = (props) => {
     const { food, getFood, isLoading } = useContext(FoodContext)
-    
 
     useEffect(() => {
         
@@ -19,7 +18,7 @@ export const FoodSearch = (props) => {
 
 
     return (
-        <div className="searchContainer">
+        <div  className="searchContainer">
             <h4>Food Lookup</h4>
             <Search
             className="searchInput"
@@ -27,7 +26,8 @@ export const FoodSearch = (props) => {
             enterButton={<SearchOutlined />}
             placeholder="Search food here"
             onSearch={value => 
-                getFood(value)}
+                getFood(value)
+            }
             allowClear={true}    
             style={{width: 250}}
             />

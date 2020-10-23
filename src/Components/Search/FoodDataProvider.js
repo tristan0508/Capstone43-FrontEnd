@@ -14,6 +14,7 @@ export const FoodDataProvider = (props) => {
     const [visible, setVisible] = useState(false)
     const [foodDatabase, setFoodDatabase] = useState([])
     const [searchTerms, setSearchTerms] = useState('')
+    const [doesItemExist, setDoesItemExist] = useState()
     
     
 
@@ -68,7 +69,10 @@ export const FoodDataProvider = (props) => {
         const getFoodDatabase = useCallback(() => {
            return fetch("http://localhost:8080/foodItems/?userId=1")
             .then(res => res.json())
-            .then(setFoodDatabase)
+            .then(res => {
+                setFoodDatabase(res)
+                setDoesItemExist(res)
+            })
         },[setFoodDatabase])
 
 
@@ -76,7 +80,7 @@ export const FoodDataProvider = (props) => {
     return (
         <FoodContext.Provider value={{
             FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
-            addFood, getFoodDatabase, foodDatabase, deleteFoodItem, searchTerms, setSearchTerms
+            addFood, getFoodDatabase, foodDatabase, deleteFoodItem, searchTerms, setSearchTerms, doesItemExist
         }}>
             {props.children}
         </FoodContext.Provider>
