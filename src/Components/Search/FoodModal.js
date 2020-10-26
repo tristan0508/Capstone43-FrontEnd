@@ -66,7 +66,8 @@ export const FoodModal = (props) => {
                 sugar: amount[5],
                 cholesterol: amount[6],
                 sodium: amount[7],
-                protein: amount[8]
+                protein: amount[8],
+                quantity: 1
             })
           } else {
             window.alert("Item Already Exists")
