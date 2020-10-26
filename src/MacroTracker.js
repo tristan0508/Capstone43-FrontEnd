@@ -6,10 +6,12 @@ import { FoodDatabaseProvider } from './Components/FoodLog/FoodDatabaseProvider'
 import './GridLayout.css'
 import { FoodMenuLog } from './Components/FoodLog/FoodMenuLog'
 import { FoodDbList } from './Components/Search/FoodDbList'
+import { NewLogModal } from './Components/FoodLog/NewLogModal'
 
 
 export const MacroTracker = () => (
     <div className="gridContainer">
+    <FoodDatabaseProvider>
         <FoodDataProvider>
             <FoodDatabaseProvider>
             <header className="gridHeader"></header>
@@ -27,7 +29,7 @@ export const MacroTracker = () => (
                 <div className="gridMain1">
                             
                             <FoodMenuLog />
-                            
+                            <NewLogModal />
                 </div>
                 <div className="gridMain2"></div>
                 <div className="gridMain3"></div>
@@ -36,6 +38,7 @@ export const MacroTracker = () => (
             <footer className="gridFooter"></footer>
                 </FoodDatabaseProvider>
         </FoodDataProvider>
+    </FoodDatabaseProvider>
     </div>
 
 )

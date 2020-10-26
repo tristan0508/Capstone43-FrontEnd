@@ -5,6 +5,7 @@ const apiKey = key.apiKey
 
 export const FoodContext = createContext();
 
+let logIs = JSON.parse(sessionStorage.getItem("isLog"))
 
 export const FoodDataProvider = (props) => {
     const [food, setFood] = useState([])
@@ -15,7 +16,7 @@ export const FoodDataProvider = (props) => {
     const [foodDatabase, setFoodDatabase] = useState([])
     const [searchTerms, setSearchTerms] = useState('')
     const [doesItemExist, setDoesItemExist] = useState()
-    
+    const [isLog, setIsLog] = useState(logIs? logIs : false)
     
 
     const getFood = (input) => {
@@ -70,8 +71,10 @@ export const FoodDataProvider = (props) => {
            return fetch("http://localhost:8080/foodItems/?userId=1")
             .then(res => res.json())
             .then(res => {
-                setFoodDatabase(res)
-                setDoesItemExist(res)
+                let response = res.filter(food => food.apiId? true : false)
+            
+                setFoodDatabase(response)
+                setDoesItemExist(response)
             })
         },[setFoodDatabase])
 
@@ -80,7 +83,8 @@ export const FoodDataProvider = (props) => {
     return (
         <FoodContext.Provider value={{
             FoodContext, food, getFood, isLoading, visible, setVisible, nutrition, getNutrition, foodName,
-            addFood, getFoodDatabase, foodDatabase, deleteFoodItem, searchTerms, setSearchTerms, doesItemExist
+            addFood, getFoodDatabase, foodDatabase, deleteFoodItem, searchTerms, setSearchTerms, doesItemExist,
+            isLog, setIsLog
         }}>
             {props.children}
         </FoodContext.Provider>
