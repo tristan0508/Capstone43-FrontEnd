@@ -11,3 +11,66 @@
     overflow: auto;
     background-color: white;
 }
+
+.percent {
+    position: relative;
+    left: 10px;
+}
+
+.calorieContainer {
+    box-shadow: 0 4px 8px 0 black;
+    display: flex;
+    background-color:  white;
+    padding: 10px;
+    justify-content: center;
+    
+}
+
+.calorieContainer h3 {
+    color: black;
+}
+
+.macros {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 black;
+}
+
+.dailyValue {
+    display: flex;
+    height: 425px;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 black;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.ant-progress-text {
+    font-size: 16px !important;
+    color: black !important;
+}
+.dailyValue .ant-progress-text {
+    font-size: 16px !important;
+    float: right;
+}
+.ant-progress-line {
+    height: 10px !important;
+}
+.ant-progress-outer {
+    height: 15px;
+    margin: 0px !important;
+    padding: 0px 10px 0px 0px !important;
+}
+.ant-layout-header {
+    background-color: black !important;
+}
+.ant-menu-item {
+    background-color: black !important;
+}
+.ant-menu-item:hover {
+    text-decoration: underline;
+}

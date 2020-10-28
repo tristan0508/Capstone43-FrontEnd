@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { FoodContext } from './FoodDataProvider'
 import { Card, Popover } from 'antd'
 import './Search.css'
@@ -10,9 +10,7 @@ export const FoodCard = (props) => {
     const{ setVisible, nutrition, getNutrition } = useContext(FoodContext)
     
     
-useEffect(() => {
-   
-}, [])
+
 
     const showModal = async(event) => {
         let parsedFood = JSON.stringify(event.currentTarget.id)

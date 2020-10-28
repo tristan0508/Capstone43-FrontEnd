@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Modal, Input } from 'antd'
 import { FoodDatabaseContext } from './FoodDatabaseProvider'
 import { FoodContext } from '../Search/FoodDataProvider';
@@ -11,11 +11,26 @@ export const NewLogModal = () => {
     const { setIsLog } = useContext(FoodContext)
 
     let date = new Date(Date.now()).toLocaleDateString([], {year: '2-digit', month:'2-digit', day:'2-digit'})
+    let foodLog = JSON.parse(sessionStorage.getItem("foodLog"))
 
     sessionStorage.setItem("logName", JSON.stringify(logName))
-    sessionStorage.setItem("calories", JSON.stringify(calorie))
+    sessionStorage.setItem("calories", JSON.stringify(parseInt(calorie)))
     sessionStorage.setItem("mealId", JSON.stringify(mealId))
+    sessionStorage.setItem("calorieTotal", JSON.stringify(currentCalories))
  
+    useEffect(() => {
+        let totalCurrent = [0]
+        foodLog.map(food => {
+            totalCurrent.push(food.calories)
+            return null
+        })
+        let calories = totalCurrent.reduce((a, b) => {
+            return a+b
+        })
+        setCurrentCalories(calories)
+        
+    }, [foodLog])
+    
 
     const showModal = () => {
         if(showing === false){
@@ -52,7 +67,7 @@ export const NewLogModal = () => {
             } else {
                 newFoodLog(
                     {
-                        userId: 1,
+                        userId: parseInt(localStorage.getItem("userId")),
                         name: logName,
                         calorieStart: parseInt(calorie),
                         currentCalories: currentCalories,

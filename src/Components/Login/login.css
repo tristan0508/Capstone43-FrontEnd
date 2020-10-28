@@ -1,0 +1,28 @@
+.ant-modal-wrap {
+  
+}
+
+
+
+.ant-modal-body {
+    z-index: 1;
+}
+
+.register {
+    cursor: pointer;
+    color: #4285F4;
+}
+
+.logoutBtn {
+    float: right;
+    color: white;
+    background-color: #4285F4;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logoutBtn:hover {
+      transform: scale(1.1);
+  }
+  

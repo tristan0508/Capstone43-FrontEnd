@@ -6,7 +6,9 @@ let foodLog = JSON.parse(sessionStorage.getItem("foodLog"))
 let source = JSON.parse(sessionStorage.getItem("foodSource"))
 let nameLog = JSON.parse(sessionStorage.getItem("logName"))
 let calories = JSON.parse(sessionStorage.getItem("calories"))
+let currentCal = JSON.parse(sessionStorage.getItem("calorieTotal"))
 let currentMeal = JSON.parse(sessionStorage.getItem("mealId"))
+
 
 export const FoodDatabaseProvider = (props) => {
     const [dbFoodItem, setDbFoodItem] = useState(foodLog? foodLog : [])
@@ -17,8 +19,11 @@ export const FoodDatabaseProvider = (props) => {
     const [showing, setShowing] = useState(false)
     const [logName, setLogName] = useState(nameLog? nameLog : '')
     const [calorie, setCalorie] = useState(calories? calories : 0)
-    const [currentCalories, setCurrentCalories] = useState(0)
+    const [currentCalories, setCurrentCalories] = useState(currentCal? currentCal : 0)
     const [mealId, setMealId] = useState(currentMeal? currentMeal : '')
+    const [protein, setProtein] = useState(0)
+    const [carb, setCarb] = useState(0)
+    const [fat, setFat] = useState(0)
     
 
 
@@ -38,7 +43,7 @@ export const FoodDatabaseProvider = (props) => {
     }
 
     const getDbFoodItem = apiId => {
-        return fetch(`http://localhost:8080/foodItems/?apiId=${apiId}`)
+        return fetch(`http://localhost:8080/foodItems/?userId=${parseInt(localStorage.getItem("userId"))}&apiId=${apiId}`)
         .then(res => res.json())
         .then(res => {
             let incomingItem = [...res]
@@ -58,7 +63,7 @@ export const FoodDatabaseProvider = (props) => {
     }
 
     const getFoodSource = () => {
-        return fetch("http://localhost:8080/foodItems/?userId=1")
+        return fetch(`http://localhost:8080/foodItems/?userId=${parseInt(localStorage.getItem("userId"))}`)
         .then(res => res.json())
         .then(res => {
             let response = res.filter(food => food.apiId? true : false)
@@ -77,7 +82,7 @@ export const FoodDatabaseProvider = (props) => {
     }
 
     const getFoodLog = date => {
-        return fetch(`http://localhost:8080/foodLogs/?date=${date}`)
+        return fetch(`http://localhost:8080/foodLogs/?userId=${parseInt(localStorage.getItem("userId"))}&date=${date}`)
         .then(res => res.json())
     }
 
@@ -120,7 +125,8 @@ export const FoodDatabaseProvider = (props) => {
              panelSwitch, setPanelSwitch, panelType, setPanelType, foodSource, newFoodLog,
              showing, setShowing, logName, setLogName, calorie, setCalorie, currentCalories,
              setCurrentCalories, newMeal, getFoodLog, mealId, setMealId, deleteFoodLog, deleteMeal,
-             returnMeals, getFoodSource, updateFoodLog, deleteLogItem
+             returnMeals, getFoodSource, updateFoodLog, deleteLogItem, protein, setProtein, carb, setCarb,
+             fat, setFat
         }}>
             {props.children}
         </FoodDatabaseContext.Provider>

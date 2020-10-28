@@ -55,7 +55,7 @@ export const FoodModal = (props) => {
     if(foodExist.length === 0){
       addFood({
                 apiId: foodName.id,
-                userId: 1,
+                userId: parseInt(localStorage.getItem("userId")),
                 name: foodName.name,
                 image:  `https://spoonacular.com/cdn/ingredients_100x100/${foodName.image}`,
                 calories: amount[0],
