@@ -68,7 +68,7 @@ export const FoodDataProvider = (props) => {
         }
 
         const getFoodDatabase = useCallback(() => {
-           return fetch("http://localhost:8080/foodItems/?userId=1")
+           return fetch(`http://localhost:8080/foodItems/?userId=${parseInt(localStorage.getItem("userId"))}`)
             .then(res => res.json())
             .then(res => {
                 let response = res.filter(food => food.apiId? true : false)
@@ -76,7 +76,7 @@ export const FoodDataProvider = (props) => {
                 setFoodDatabase(response)
                 setDoesItemExist(response)
             })
-        },[setFoodDatabase])
+        }, [setFoodDatabase])
 
 
 

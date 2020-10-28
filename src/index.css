@@ -1,4 +1,20 @@
 @import '~antd/dist/antd.css';
+#root{
+  opacity: 0;
+}
+
+@keyframes bgfade {
+  0% { opacity: 0;}
+  15% { opacity: .15;}
+  25%{ opacity: .25;}
+  33% { opacity: .33;}
+  50% { opacity: .5;}
+  63% {opacity: .63;}
+  75% { opacity: .75;}
+  83% { opacity: .83;}
+  100% { opacity: 1;}
+  }
+
 body {
   width: fit-content;
   height: fit-content;

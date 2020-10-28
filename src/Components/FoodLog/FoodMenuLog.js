@@ -35,7 +35,7 @@ export const FoodMenuLog = () => {
     const { dbFoodItem, setPanelSwitch, setFoodItem, panelSwitch, foodSource, setDbFoodItem, setShowing, showing,
     logName, mealId, setLogName, setCalorie, setMealId, deleteFoodLog, deleteMeal, getFoodSource, updateFoodLog,
     deleteLogItem, returnMeals } = useContext(FoodDatabaseContext)
-    const { isLog, setIsLog, addFood } = useContext(FoodContext)
+    const { isLog, setIsLog, addFood} = useContext(FoodContext)
 
 
     sessionStorage.setItem("foodLog", JSON.stringify(dbFoodItem))
@@ -43,11 +43,13 @@ export const FoodMenuLog = () => {
     sessionStorage.setItem("isLog", JSON.stringify(isLog))
     let foodLog = JSON.parse(sessionStorage.getItem("foodLog"))
     let source = JSON.parse(sessionStorage.getItem("foodSource"))
+    let user = JSON.parse(localStorage.getItem("userId"))
     
 
     useEffect(() => {
         getFoodSource()
-    }, [])
+    
+    }, [dbFoodItem, user])
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
     const deleteItem = (itemName) => {
@@ -153,8 +155,6 @@ export const FoodMenuLog = () => {
        
        foodLog.map(food => {
            
-           let amount = food.quantity
-    
            if(food.mealId ? true : false){
                updateFoodLog(food.id, 
                 {
@@ -173,7 +173,7 @@ export const FoodMenuLog = () => {
            } else if(food.saved !== true){
             addFood(
                 {
-                    userId: 1,
+                    userId: parseInt(localStorage.getItem("userId")),
                     mealId: mealId[0],
                     type: food.type,
                     quantity: food.quantity,

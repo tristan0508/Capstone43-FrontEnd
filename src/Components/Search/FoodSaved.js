@@ -8,7 +8,7 @@ import './Search.css'
 export const FoodSaved = (props) => {
     const { deleteFoodItem, isLog } = useContext(FoodContext)
     const { dbFoodItem, getDbFoodItem, panelSwitch, getFoodLog, setMealId, getMeals,
-    newMeal, mealId, setIsLog, logName } = useContext(FoodDatabaseContext)
+    newMeal, logName } = useContext(FoodDatabaseContext)
 
     let date = new Date(Date.now()).toLocaleDateString([], {year: '2-digit', month:'2-digit', day:'2-digit'})
 
@@ -36,7 +36,7 @@ useEffect(() => {
                 if(id[0] !== foodId[0]){
                     newMeal(
                         {
-                            userId: 1,
+                            userId: parseInt(localStorage.getItem("userId")),
                             foodLogId: id[0],
                             date
                         }

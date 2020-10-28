@@ -13,12 +13,12 @@ export const FoodDbList = (props) => {
     const [ filteredFood, setFiltered ] = useState([])
 
     const check = useRef()
-    
+    let user = JSON.parse(localStorage.getItem("userId"))
 
 useEffect(() => {
-    getFoodDatabase()
+   getFoodDatabase()
 
-}, [getFoodDatabase])
+}, [user, getFoodDatabase])
 
 
 useEffect(() => {

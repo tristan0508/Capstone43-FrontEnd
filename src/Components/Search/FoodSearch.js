@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { FoodContext } from './FoodDataProvider';
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
@@ -12,9 +12,6 @@ const { Search } = Input;
 export const FoodSearch = (props) => {
     const { food, getFood, isLoading } = useContext(FoodContext)
 
-    useEffect(() => {
-        
-    }, [])
 
 
     return (
