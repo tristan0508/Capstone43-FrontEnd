@@ -9,7 +9,7 @@
 
 .layoutContent {
     overflow: auto;
-    background-color: white;
+    background-color: var(--dark-one, white) !important;
 }
 
 .percent {
@@ -19,39 +19,51 @@
 
 .calorieContainer {
     box-shadow: 0 4px 8px 0 black;
+    border: 2px solid white;
     display: flex;
-    background-color:  white;
+    background-color: var(--dark-one, white) !important;
     padding: 10px;
     justify-content: center;
     
 }
 
 .calorieContainer h3 {
-    color: black;
+    color: var(--dark-two, black) !important;
 }
 
 .macros {
     display: flex;
+    border: 2px solid white;
     justify-content: space-evenly;
-    background-color: white;
+    background-color: var(--dark-one, white) !important;
     margin-top: 10px;
     padding: 10px;
     box-shadow: 0 4px 8px 0 black;
 }
-
+.macros h3 {
+    color: var(--dark-two, black) !important;
+}
 .dailyValue {
     display: flex;
-    height: 425px;
+    height: 405px;
     flex-wrap: wrap;
-    background-color: white;
+    border: 2px solid white;
+    background-color: var(--dark-one, white) !important;
     box-shadow: 0 4px 8px 0 black;
     margin-top: 10px;
     padding: 10px;
+}
+.dailyValue p {
+    color: var(--dark-two, black) !important;
+}
+.dailyValue h2 {
+    color: var(--dark-two, black) !important;
 }
 
 .ant-progress-text {
     font-size: 16px !important;
-    color: black !important;
+    padding: 5px !important;
+    color: var(--dark-two, black) !important;
 }
 .dailyValue .ant-progress-text {
     font-size: 16px !important;
@@ -66,11 +78,57 @@
     padding: 0px 10px 0px 0px !important;
 }
 .ant-layout-header {
-    background-color: black !important;
+    background-color: var(--dark-two, black) !important;
 }
 .ant-menu-item {
-    background-color: black !important;
+    background-color: var(--dark-two, black) !important;
 }
 .ant-menu-item:hover {
     text-decoration: underline;
+}
+.ant-table-cell {
+    background-color: var(--dark-one, white) !important;
+    color: var(--dark-two, black) !important;
+}
+.ant-layout-header {
+    background-color: black!important;
+}
+.ant-layout-content {
+    color: var(--dark-two, black) !important;
+    background-color: var(--dark-one, white) !important;
+}
+.ant-menu-item {
+    background-color:  black !important;
+}
+.ant-menu-item:hover {
+    text-decoration: underline;
+}
+.ant-collapse-header {
+    color: var(--dark-two, black) !important;
+    background-color: var(--dark-one, white) !important;
+}
+.ant-collapse-content-box {
+
+    color: var(--dark-two, black) !important;
+    background-color: var(--dark-one, white) !important;
+}
+.ant-table-cell {
+    color: var(--dark-two, black) !important;
+    background-color: var(--dark-one, white) !important;
+}
+th.ant-table-cell {
+    color: var(--dark-two, black) !important;
+    background-color: var(--dark-one, white) !important;
+}
+.ant-card-body {
+    background-color: var(--dark-one, white) !important;
+}
+.ant-card-body p {
+    color: var(--dark-two, black) !important;
+}
+#rcDialogTitle3 {
+    color:  var(--dark-two, black) !important;
+}
+.ant-modal-body h4 {
+    color: var(--dark-two, black) !important;
 }

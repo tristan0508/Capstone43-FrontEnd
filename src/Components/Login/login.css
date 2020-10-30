@@ -1,13 +1,3 @@
-.ant-modal-wrap {
-  
-}
-
-
-
-.ant-modal-body {
-    z-index: 1;
-}
-
 .register {
     cursor: pointer;
     color: #4285F4;
@@ -25,4 +15,17 @@
   .logoutBtn:hover {
       transform: scale(1.1);
   }
+  
+  .ant-modal-close-x{
+      visibility: hidden;
+  }
+.darkMode {
+    margin-top: 110px;
+    margin-left: 310px;
+    cursor: pointer;
+    background-color: var(--dark-one, white) !important;
+    color: var(--dark-two, black) !important;
+    border: 2px solid var(--dark-two, black) !important;
+}
+
   

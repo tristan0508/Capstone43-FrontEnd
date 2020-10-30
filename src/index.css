@@ -1,6 +1,8 @@
 @import '~antd/dist/antd.css';
 #root{
   opacity: 0;
+  /* --dark-mode-black: white;
+  --dark-mode-white: black; */
 }
 
 @keyframes bgfade {

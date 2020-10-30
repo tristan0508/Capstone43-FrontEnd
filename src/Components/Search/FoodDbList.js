@@ -31,7 +31,6 @@ useEffect(() => {
 }, [searchTerms, foodDatabase])
 
 const checked = (event) => {
-    console.log(event)
         if(event === false){
         check.current.className = 'foodDbCardsHidden'
         } else {

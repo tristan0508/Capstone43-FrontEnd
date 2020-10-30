@@ -1,0 +1,33 @@
+.chatBotImg {
+    height: 350px;
+    width: 400px;
+    border: 1px solid black;
+}
+.chatArea {
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    border: 1px solid black;
+    display: flex;
+    margin-top: auto;
+    flex-flow: column nowrap;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+}
+/* .chatArea > :first-child {
+    margin-top: auto;
+} */
+.chatBotText{
+    color: black;
+    background-color: #43D0CA;
+    width: fit-content;
+    border-radius: 5px;
+
+}
+.userText {
+    color: black;
+    background-color: #39ff5a;
+    width: fit-content;
+    border-radius: 5px;
+    margin-left: 3px;
+}

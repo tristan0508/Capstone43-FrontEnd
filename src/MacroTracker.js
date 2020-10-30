@@ -12,6 +12,8 @@ import { FoodDisplay } from './Components/FoodLog/FoodDisplay'
 import { FoodDailyValue } from './Components/FoodLog/FoodDailyValue'
 import { UserLogin } from './Components/Login/UserLogin'
 import { Logout } from './Components/Login/Logout'
+import { DarkMode } from './Components/Login/DarkMode'
+import { ChatBot } from './Components/ChatBot/ChatBot'
 
 
 export const MacroTracker = () => (
@@ -21,6 +23,7 @@ export const MacroTracker = () => (
             <FoodDatabaseProvider>
             <header className="gridHeader">
                 <UserLogin />
+                <DarkMode />
                 <Logout />
             </header>
                 <aside className="gridAside">
@@ -44,7 +47,9 @@ export const MacroTracker = () => (
                         <FoodDisplay />
                         <FoodDailyValue />
                 </div>
-                <div className="gridMain3"></div>
+                <div className="gridMain3">
+                    <ChatBot />
+                </div>
 
             </main>
             <footer className="gridFooter"></footer>
