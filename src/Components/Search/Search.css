@@ -71,12 +71,9 @@
 .savedCard {
    position: relative;
    left: 5px;
-   height: 175px;
+   height: 160px;
 }
 
-.dbSearchContainer {
-    
-}
 
 .foodDbSearch {
   margin-left: 7px;
@@ -102,7 +99,13 @@
     cursor: pointer;
     color: #4285F4;
 }
-
+.ant-popover-inner-content {
+    background-color: var(--dark-one, white) !important;
+    border: 1px solid white;
+}
+.ant-popover-inner-content p {
+    color: var(--dark-two, black) !important;
+}
 .switchVisible {
     position: relative;
     left: 140px;
@@ -110,4 +113,27 @@
 
 .ant-menu-item {
     color: white !important;
+}
+.ant-card-body {
+    height: 100px !important;
+    padding: 5px !important;
+    line-height: 18px !important;
+}
+.ant-card-head {
+    background-color: var(--dark-one, white ) !important;
+}
+.ant-card-head-title {
+    color: var(--dark-two, black) !important;
+}
+.ant-modal-body {
+    background-color: var(--dark-one, white ) !important;
+    border: 2px solid white;
+}
+.ant-modal-header {
+    background-color: var(--dark-one, white ) !important;
+    border: 2px solid white;
+}
+.ant-modal-footer {
+    background-color: var(--dark-one, white ) !important;
+    border: 2px solid white;
 }

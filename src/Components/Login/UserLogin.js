@@ -43,7 +43,7 @@ export const UserLogin = props => {
                     document.getElementById('root').style.animation = "bgfade 1s ease-in";
                     document.getElementById('root').style.opacity = "1"
 
-                    getFoodLog(date)
+                     getFoodLog(date)
                     .then(res => {
                         let response = res.filter(res => res.date === date)
                         return response
@@ -59,22 +59,19 @@ export const UserLogin = props => {
                                 .then(res => {
                                     setDbFoodItem(res)
                                 })
-                                setIsLog(true)
+                                return setIsLog(true)
+                            }) }}).then(() => {
+                                getFoodDatabase() 
                             })
                     
                     setIsShowing(false)
                 } else {
                     setIsShowing(true)
                     isRegister? window.alert("Welcome!") : window.alert("No user found!")
-                    
-                }
-                
-            }).then(() => {
-                getFoodDatabase() 
+                 }
             })
         }
-    }) 
-}
+
 
 
     const handleRegister = (e) => {
@@ -131,8 +128,10 @@ export const UserLogin = props => {
     }
 
     const clear = () => {
-        localStorage.clear()
-        sessionStorage.clear()
+      setUserName()
+      setFirstName()
+      setLastName()
+      setEmail()
     }
     return (
         <>

@@ -19,10 +19,10 @@ export const FoodCalorieDisplay = () => {
             <h3>Daily Goal</h3>
             <Progress
             className="dailyGoal" 
-            width={120}
+            width={132}
             type="dashboard"
             percent={percent} 
-            format={() => `${currentCalories}/${calorie} Cal`} />
+            format={() => `${Math.round(currentCalories)}/${calorie} Cal`} />
             
             <Progress 
             className="percent"

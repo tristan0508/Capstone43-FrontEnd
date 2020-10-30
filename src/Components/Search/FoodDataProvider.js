@@ -28,7 +28,7 @@ export const FoodDataProvider = (props) => {
     }
 
     const getNutrition = (food) => {
-        fetch(`https://api.spoonacular.com/recipes/parseIngredients?apiKey=${apiKey}&ingredientList=${food}&servings=1&includeNutrition=true`, {
+        fetch(`https://api.spoonacular.com/recipes/parseIngredients?apiKey=${apiKey}&ingredientList=${food}1&includeNutrition=true`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"

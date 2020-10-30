@@ -242,8 +242,7 @@ export const FoodMenuLog = () => {
                 <Menu.Item  onClick={showModal} key="NewLog">New Log</Menu.Item>
                 <Menu.Item  onClick={saveLog} key="Save">Save</Menu.Item>
                 <Menu.Item  onClick={deleteLog} key="Delete">Delete</Menu.Item>
-               
-                <Menu.Item  key="SavedLogs">Saved Logs</Menu.Item>
+                <Menu.Item  key="SavedLogs">Weekly</Menu.Item>
             </Menu>
         </Header>
         <Content className="layoutContent">
