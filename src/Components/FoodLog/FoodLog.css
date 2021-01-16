@@ -45,10 +45,12 @@
 }
 .dailyValue {
     display: flex;
-    height: fit-content;
+    height: 47vh;
+    min-height: 309px !important;
     width: 100%;
     flex-wrap: wrap;
     justify-self: center;
+    overflow-y: auto;
     border: 2px solid white;
     background-color: var(--dark-one, white) !important;
     box-shadow: 0 4px 8px 0 black;

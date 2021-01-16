@@ -85,6 +85,7 @@
 
 .foodDbCards {
     visibility: visible;
+    height: 100%;
 }
 .foodDbCardsHidden {
     visibility: hidden;

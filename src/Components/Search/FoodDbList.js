@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState, useRef } from 'react';
 import { FoodContext } from './FoodDataProvider';
 import { FoodSaved } from './FoodSaved'
-import { Input, Switch } from 'antd';
+import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 
@@ -30,16 +30,7 @@ useEffect(() => {
         }
 }, [searchTerms, foodDatabase])
 
-const checked = (event) => {
-        if(event === false){
-        check.current.className = 'foodDbCardsHidden'
-        } else {
-        check.current.className = 'foodDbCards'
-    }
-}
-
  
-
     return (
        <> 
         <div className="dbSearchContainer">
