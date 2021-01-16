@@ -29,7 +29,7 @@ export const NewLogModal = () => {
         })
         setCurrentCalories(calories)
         
-    }, [foodLog])
+    }, [foodLog, setCurrentCalories])
     
 
     const showModal = () => {

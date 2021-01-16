@@ -18,13 +18,18 @@
   }
 
 body {
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
   font-family: 'Space Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(./images/My_Post_2_iceb2d.png);
-  background-size: cover;
 }
 
 code {
@@ -34,9 +39,8 @@ code {
 
 .layout {
   background-color: rgba(0,0,0,0.3);
-  margin: auto;
-  min-height: 43.75rem;
-  width: auto;
+  min-height: 72vh;
+  width: 100%;
 }
 
 .layoutFooter {

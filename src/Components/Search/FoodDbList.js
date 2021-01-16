@@ -38,18 +38,21 @@ const checked = (event) => {
     }
 }
 
+ 
+
     return (
        <> 
         <div className="dbSearchContainer">
             <h4>Search Food Saved</h4>
             <Search className="foodDbSearch" placeholder="input search text"
              onKeyUp={
+
                  (keyEvent) => setSearchTerms(keyEvent.target.value)
              }
             style={{ width: 250 }}
             enterButton={<SearchOutlined />}
+            onChange={(keyEvent) => keyEvent.target.value === ''? setSearchTerms('') : null}
             allowClear={true} />
-            <Switch className="switchVisible" defaultChecked onChange={checked}/>
         
              
                 {

@@ -33,7 +33,7 @@ import './Search.css'
     },
 ];
 
-export const FoodModal = (props) => {
+export const FoodModal = () => {
     const { visible, setVisible, nutrition, foodName, addFood, doesItemExist } = useContext(FoodContext)
     let image = <img className="modalImage"src={url + foodName.image} alt="food" />
 

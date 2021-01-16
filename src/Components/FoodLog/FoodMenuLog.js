@@ -148,68 +148,55 @@ export const FoodMenuLog = () => {
     }
    }
 
-   const saveLog = () => {
+   const saveLog = async () => {
        if(isLog === false){
         window.alert("Create New Log")
        }
        
-       foodLog.map(food => {
+
+       await foodLog.map((food) => {
            
-           if(food.mealId ? true : false){
-               updateFoodLog(food.id, 
-                {
-                    quantity: food.quantity,
-                    calories: food.calories,
-                    fat: food.fat,
-                    saturatedFat: food.saturatedFat,
-                    carbohydrates: food.carbohydrates,
-                    netCarbohydrates: food.netCarbohydrates,
-                    sugar: food.sugar,
-                    cholesterol: food.cholesterol,
-                    sodium: food.sodium,
-                    protein: food.protein
-                })
-                
-           } else if(food.saved !== true){
-            addFood(
-                {
-                    userId: parseInt(localStorage.getItem("userId")),
-                    mealId: mealId[0],
-                    type: food.type,
-                    quantity: food.quantity,
-                    name: food.name,
-                    image: food.image,
-                    calories: food.calories,
-                    fat: food.fat,
-                    saturatedFat: food.saturatedFat,
-                    carbohydrates: food.carbohydrates,
-                    netCarbohydrates: food.netCarbohydrates,
-                    sugar: food.sugar,
-                    cholesterol: food.cholesterol,
-                    sodium: food.sodium,
-                    protein: food.protein
-                })
-           } if(food.saved === true){
-            updateFoodLog(food.id, 
-                {
-                    quantity: food.quantity,
-                    calories: food.calories,
-                    fat: food.fat,
-                    saturatedFat: food.saturatedFat,
-                    carbohydrates: food.carbohydrates,
-                    netCarbohydrates: food.netCarbohydrates,
-                    sugar: food.sugar,
-                    cholesterol: food.cholesterol,
-                    sodium: food.sodium,
-                    protein: food.protein
-                })
+             if(food.mealId){
+                    updateFoodLog(food.id, 
+                     {
+                        quantity: food.quantity,
+                        calories: food.calories,
+                        fat: food.fat,
+                        saturatedFat: food.saturatedFat,
+                        carbohydrates: food.carbohydrates,
+                        netCarbohydrates: food.netCarbohydrates,
+                        sugar: food.sugar,
+                        cholesterol: food.cholesterol,
+                        sodium: food.sodium,
+                        protein: food.protein,
+                     })
+                     
+           } if(!food.mealId) {
+                    addFood(
+                    {
+                        userId: parseInt(localStorage.getItem("userId")),
+                        mealId: mealId[0],
+                        type: food.type,
+                        quantity: food.quantity,
+                        name: food.name,
+                        image: food.image,
+                        calories: food.calories,
+                        fat: food.fat,
+                        saturatedFat: food.saturatedFat,
+                        carbohydrates: food.carbohydrates,
+                        netCarbohydrates: food.netCarbohydrates,
+                        sugar: food.sugar,
+                        cholesterol: food.cholesterol,
+                        sodium: food.sodium,
+                        protein: food.protein,
+                    })
            }
-            return food.saved = true
-        })
-        window.alert("Saved!")
-        returnMeals(mealId)
-        .then(res => {
-            setDbFoodItem(res)
+
+           returnMeals(mealId[0])
+           .then(res => {
+               setDbFoodItem(res)
+           })
+            return null
         })
     }
 
@@ -230,8 +217,15 @@ export const FoodMenuLog = () => {
         resetLog()
         setMealId('')
        }
-       
-        
+   }
+
+   const clearLog = () => {
+       setDbFoodItem([])
+   }
+
+   const twoCalls = (e) => {
+       changed(e)
+       saveLog()
    }
 
     return (
@@ -242,14 +236,14 @@ export const FoodMenuLog = () => {
                 <Menu.Item  onClick={showModal} key="NewLog">New Log</Menu.Item>
                 <Menu.Item  onClick={saveLog} key="Save">Save</Menu.Item>
                 <Menu.Item  onClick={deleteLog} key="Delete">Delete</Menu.Item>
-                <Menu.Item  key="SavedLogs">Weekly</Menu.Item>
+                <Menu.Item  onClick={clearLog}key="Clear">Clear</Menu.Item>
             </Menu>
         </Header>
         <Content className="layoutContent">
       
       <Collapse
       accordion={true}
-      onChange={changed}
+      onChange={twoCalls}
       bordered={true}
       defaultActiveKey={['1']}
       expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}

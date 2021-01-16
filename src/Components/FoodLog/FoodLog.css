@@ -3,10 +3,6 @@
 
 }
 
-.layout {
-    max-height: 700px;
-}
-
 .layoutContent {
     overflow: auto;
     background-color: var(--dark-one, white) !important;
@@ -21,6 +17,7 @@
     box-shadow: 0 4px 8px 0 black;
     border: 2px solid white;
     display: flex;
+    width: 100%;
     background-color: var(--dark-one, white) !important;
     padding: 10px;
     justify-content: center;
@@ -29,12 +26,14 @@
 
 .calorieContainer h3 {
     color: var(--dark-two, black) !important;
+    font-size: 1vw;
 }
 
 .macros {
     display: flex;
     border: 2px solid white;
     justify-content: space-evenly;
+    width: min-content;
     background-color: var(--dark-one, white) !important;
     margin-top: 10px;
     padding: 10px;
@@ -42,38 +41,49 @@
 }
 .macros h3 {
     color: var(--dark-two, black) !important;
+    height: fit-content;
 }
 .dailyValue {
     display: flex;
-    height: 405px;
+    height: fit-content;
+    width: 100%;
     flex-wrap: wrap;
+    justify-self: center;
     border: 2px solid white;
     background-color: var(--dark-one, white) !important;
     box-shadow: 0 4px 8px 0 black;
-    margin-top: 10px;
+    margin-top: 10px !important;
+    margin: auto;
     padding: 10px;
 }
 .dailyValue p {
     color: var(--dark-two, black) !important;
+    padding-top: 1px !important;
 }
 .dailyValue h2 {
     color: var(--dark-two, black) !important;
 }
 
+.ant-progress-circle-path {
+    width: 100% !important;
+    height: 1vh !important;
+}
+
 .ant-progress-text {
-    font-size: 16px !important;
+    font-size: 2vh !important;
     padding: 5px !important;
+    width: fit-content !important;
     color: var(--dark-two, black) !important;
 }
 .dailyValue .ant-progress-text {
-    font-size: 16px !important;
-    float: right;
+   display: none;
 }
 .ant-progress-line {
     height: 10px !important;
 }
 .ant-progress-outer {
-    height: 15px;
+    height: auto;
+    width: 100% !important;
     margin: 0px !important;
     padding: 0px 10px 0px 0px !important;
 }

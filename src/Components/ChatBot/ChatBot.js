@@ -28,7 +28,10 @@ export const ChatBot = () => {
 
     return (
         <>  
+            <div className="imgContainer">
             <img className="chatBotImg" src={image} alt ="Chatbot"/>
+            </div>
+            
             <div className="chatArea">
             
                 {
@@ -44,14 +47,12 @@ export const ChatBot = () => {
                     })
                 }   
                  
-                
-           
-                
+                    
             </div>
             <Search 
-            style={{width: 400}}
+            style={{width: '100%'}}
             ref={input}
-            placeholder="Ask me something..."
+            placeholder="Ex. 1 cup to ounces or Tell me a joke "
             enterButton={<SendOutlined />}
        
             onPressEnter={e => {

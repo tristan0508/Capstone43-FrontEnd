@@ -9,7 +9,7 @@ import { FoodCard } from './FoodCard';
 
 const { Search } = Input;
 
-export const FoodSearch = (props) => {
+export const FoodSearch = () => {
     const { food, getFood, isLoading } = useContext(FoodContext)
 
 
