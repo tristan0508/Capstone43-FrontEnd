@@ -22,7 +22,7 @@ export const UserLogin = props => {
         user? document.getElementById('root').style.animation = "none" : setIsShowing(true)
         user? document.getElementById('root').style.opacity = "1" : setIsShowing(true)
         user? setIsShowing(false) : setIsShowing(true)
-    }, [user])
+    }, [])
     
 
     const existingUserCheck = () => {
@@ -55,7 +55,7 @@ export const UserLogin = props => {
                                 setCalorie(value.calorieStart)
                                 setCurrentCalories(value.currentCalories)
                                 setMealId(value.id)
-                                returnMeals(value.id)
+                                returnMeals(parseInt(value.id))
                                 .then(res => {
                                     setDbFoodItem(res)
                                 })

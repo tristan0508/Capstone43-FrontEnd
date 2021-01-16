@@ -8,7 +8,6 @@ import { FoodMenuLog } from './Components/FoodLog/FoodMenuLog'
 import { FoodDbList } from './Components/Search/FoodDbList'
 import { NewLogModal } from './Components/FoodLog/NewLogModal'
 import { FoodCalorieDisplay } from './Components/FoodLog/FoodCalorieDisplay'
-import { FoodDisplay } from './Components/FoodLog/FoodDisplay'
 import { FoodDailyValue } from './Components/FoodLog/FoodDailyValue'
 import { UserLogin } from './Components/Login/UserLogin'
 import { Logout } from './Components/Login/Logout'
@@ -44,7 +43,6 @@ export const MacroTracker = () => (
                 </div>
                 <div className="gridMain2">
                         <FoodCalorieDisplay />
-                        <FoodDisplay />
                         <FoodDailyValue />
                 </div>
                 <div className="gridMain3">
