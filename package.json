@@ -3,20 +3,24 @@
   "homepage": "http://tristan0508.github.io/Capstone43-FrontEnd",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.12.0",
+    "npm": "6.14.8"
+  },
   "dependencies": {
-    "@ant-design/icons": "^4.2.2",
+    "@ant-design/icons": "^4.3.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/react-transition-group": "^4.4.0",
-    "antd": "^4.7.0",
-    "cloudinary-react": "^1.6.7",
+    "antd": "^4.10.2",
+    "cloudinary-react": "^1.6.8",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "3.4.3",
     "react-transition-group": "^1.2.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.0"
+    "semantic-ui-react": "^2.0.2"
   },
   "scripts": {
     "start": "BROWSER='chrome' react-scripts start",
@@ -39,11 +43,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "engines": {
-      "node": ">=14.12.0",
-      "npm": ">=6.0.0"
-    }
-
+    ]
   }
 }
